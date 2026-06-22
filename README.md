@@ -2,47 +2,83 @@
 
 ## Anggota
 
-Ketua:
-- Johan Purnomo
+### Ketua
 
-Anggota 1:
-- (Nama Anggota 1)
+* Johan Purnomo
 
-Anggota 2:
-- (Nama Anggota 2)
+### Anggota 1 (Backend)
 
-Anggota 3:
-- (Nama Anggota 3)
+* Nikolaus Kuai
 
-Anggota 4:
-- (Nama Anggota 4)
+### Anggota 2 (Frontend UI)
+
+* Hamdan Mahmud
+
+### Anggota 3 (Database)
+
+* Thomas Aquino Sanga Ola
+
+### Anggota 4 (Testing & Dokumentasi)
+
+* Purnomo
+
+---
 
 ## Pembagian Tugas
 
 ### Ketua
-- Mengatur repository GitHub
-- Membuat struktur project Laravel
-- Menggabungkan hasil kerja anggota (merge)
-- Mengatur branch dan workflow
-- Deploy aplikasi
+
+* Mengatur repository GitHub
+* Membuat struktur project Laravel
+* Membuat model, migration, dan resource controller awal
+* Menggabungkan hasil kerja anggota (merge)
+* Mengatur branch dan workflow
+* Deploy aplikasi
 
 ### Anggota 1 (Backend - CRUD)
-- Membuat Model Mahasiswa
-- Membuat Controller Mahasiswa
-- Membuat CRUD (Create, Read, Update, Delete)
-- Routing Laravel
+
+* Mengembangkan Model Mahasiswa
+* Mengisi Controller Mahasiswa
+* Membuat CRUD (Create, Read, Update, Delete)
+* Membuat dan mengatur Routing Laravel
+* Validasi data input
 
 ### Anggota 2 (Frontend UI)
-- Membuat Blade template
-- Desain halaman (Bootstrap / Tailwind)
-- Layout UI (navbar, table, form)
+
+* Membuat Blade Template
+* Mendesain halaman menggunakan Bootstrap/Tailwind
+* Membuat layout aplikasi (navbar, tabel, form, dan halaman CRUD)
 
 ### Anggota 3 (Database)
-- Membuat migration
-- Membuat seeder
-- Menyusun struktur database (ERD sederhana)
+
+* Menyusun struktur database
+* Membuat ERD sederhana
+* Membuat seeder database
+* Pengelolaan data awal aplikasi
 
 ### Anggota 4 (Testing & Dokumentasi)
-- Testing fitur CRUD
-- Screenshot hasil aplikasi
-- Dokumentasi project
+
+* Testing fitur CRUD
+* Dokumentasi penggunaan aplikasi
+* Screenshot hasil aplikasi
+* Penyusunan laporan proyek
+
+---
+
+## Teknologi yang Digunakan
+
+* Laravel
+* PHP
+* MySQL
+* Bootstrap
+* Git & GitHub
+
+---
+
+## Fitur Sistem
+
+* Manajemen data mahasiswa
+* Tambah data mahasiswa
+* Lihat data mahasiswa
+* Edit data mahasiswa
+* Hapus data mahasiswa
