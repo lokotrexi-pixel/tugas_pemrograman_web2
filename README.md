@@ -8,7 +8,7 @@
 
 ### Anggota 1 (Backend)
 
-* Nikolaus Kuai
+* Thomas Aquino Sanga Ola
 
 ### Anggota 2 (Frontend UI)
 
@@ -16,11 +16,11 @@
 
 ### Anggota 3 (Database)
 
-* Thomas Aquino Sanga Ola
+* Purnomo
 
 ### Anggota 4 (Testing & Dokumentasi)
 
-* Purnomo
+* Nikolaus Kuai
 
 ---
 
