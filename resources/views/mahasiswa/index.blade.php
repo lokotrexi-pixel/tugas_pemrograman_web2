@@ -2,36 +2,44 @@
 
 @section('content')
 
-<a href="{{ route('mahasiswa.create') }}">+ Tambah Mahasiswa</a>
+<h2>Data Mahasiswa</h2>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Jurusan</th>
-        <th>Email</th>
-        <th>Aksi</th>
-    </tr>
+<table class="table table-striped table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Email</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
 
-    @foreach($mahasiswa as $m)
-    <tr>
-        <td>{{ $m->nim }}</td>
-        <td>{{ $m->nama }}</td>
-        <td>{{ $m->jurusan }}</td>
-        <td>{{ $m->email }}</td>
-        <td>
-            <a href="{{ route('mahasiswa.show', $m->id) }}">Lihat</a>
-            <a href="{{ route('mahasiswa.edit', $m->id) }}">Edit</a>
+    <tbody>
+        @foreach ($mahasiswa as $mhs)
+        <tr>
+            <td>{{ $mhs->nim }}</td>
+            <td>{{ $mhs->nama }}</td>
+            <td>{{ $mhs->jurusan }}</td>
+            <td>{{ $mhs->email }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm"
+                   href="/mahasiswa/{{ $mhs->id }}/edit">
+                    Edit
+                </a>
 
-            <form action="{{ route('mahasiswa.destroy', $m->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Hapus</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
+                <form action="/mahasiswa/{{ $mhs->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
 
+                    <button class="btn btn-danger btn-sm" type="submit">
+                        Hapus
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
 </table>
 
 @endsection

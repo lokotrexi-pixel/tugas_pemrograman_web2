@@ -4,17 +4,38 @@
 
 <h2>Edit Mahasiswa</h2>
 
-<form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
+<form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
     @csrf
     @method('PUT')
 
-    <input type="text" name="nim" value="{{ $mahasiswa->nim }}"><br><br>
-    <input type="text" name="nama" value="{{ $mahasiswa->nama }}"><br><br>
-    <input type="text" name="jurusan" value="{{ $mahasiswa->jurusan }}"><br><br>
-    <input type="email" name="email" value="{{ $mahasiswa->email }}"><br><br>
-    <textarea name="alamat">{{ $mahasiswa->alamat }}</textarea><br><br>
+    <div class="mb-3">
+        <label>NIM</label>
+        <input class="form-control" type="text" name="nim" value="{{ $mahasiswa->nim }}">
+    </div>
 
-    <button type="submit">Update</button>
+    <div class="mb-3">
+        <label>Nama</label>
+        <input class="form-control" type="text" name="nama" value="{{ $mahasiswa->nama }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Jurusan</label>
+        <input class="form-control" type="text" name="jurusan" value="{{ $mahasiswa->jurusan }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" type="email" name="email" value="{{ $mahasiswa->email }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Alamat</label>
+        <textarea class="form-control" name="alamat">{{ $mahasiswa->alamat }}</textarea>
+    </div>
+
+    <button class="btn btn-success" type="submit">
+        Update
+    </button>
 </form>
 
 @endsection
