@@ -1,19 +1,30 @@
 @extends('mahasiswa.layout')
 
 @section('content')
+<div class="container">
 
-<h2>Tambah Mahasiswa</h2>
+    <h2>Tambah Mahasiswa</h2>
 
-<form action="{{ route('mahasiswa.store') }}" method="POST">
-    @csrf
+    <form method="POST" action="/mahasiswa">
+        @csrf
 
-    <input type="text" name="nim" placeholder="NIM"><br><br>
-    <input type="text" name="nama" placeholder="Nama"><br><br>
-    <input type="text" name="jurusan" placeholder="Jurusan"><br><br>
-    <input type="email" name="email" placeholder="Email"><br><br>
-    <textarea name="alamat" placeholder="Alamat"></textarea><br><br>
+        <label>NIM</label><br>
+        <input type="text" name="nim"><br><br>
 
-    <button type="submit">Simpan</button>
-</form>
+        <label>Nama</label><br>
+        <input type="text" name="nama"><br><br>
 
+        <label>Jurusan</label><br>
+        <input type="text" name="jurusan"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Alamat</label><br>
+        <textarea name="alamat"></textarea><br><br>
+
+        <button type="submit">Simpan</button>
+    </form>
+
+</div>
 @endsection

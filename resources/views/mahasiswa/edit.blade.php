@@ -1,20 +1,31 @@
 @extends('mahasiswa.layout')
 
 @section('content')
+<div class="container">
 
-<h2>Edit Mahasiswa</h2>
+    <h2>Edit Mahasiswa</h2>
 
-<form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
-    @csrf
-    @method('PUT')
+    <form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
+        @csrf
+        @method('PUT')
 
-    <input type="text" name="nim" value="{{ $mahasiswa->nim }}"><br><br>
-    <input type="text" name="nama" value="{{ $mahasiswa->nama }}"><br><br>
-    <input type="text" name="jurusan" value="{{ $mahasiswa->jurusan }}"><br><br>
-    <input type="email" name="email" value="{{ $mahasiswa->email }}"><br><br>
-    <textarea name="alamat">{{ $mahasiswa->alamat }}</textarea><br><br>
+        <label>NIM</label><br>
+        <input type="text" name="nim" value="{{ $mahasiswa->nim }}"><br><br>
 
-    <button type="submit">Update</button>
-</form>
+        <label>Nama</label><br>
+        <input type="text" name="nama" value="{{ $mahasiswa->nama }}"><br><br>
 
+        <label>Jurusan</label><br>
+        <input type="text" name="jurusan" value="{{ $mahasiswa->jurusan }}"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email" value="{{ $mahasiswa->email }}"><br><br>
+
+        <label>Alamat</label><br>
+        <textarea name="alamat">{{ $mahasiswa->alamat }}</textarea><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+</div>
 @endsection

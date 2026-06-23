@@ -5,7 +5,6 @@
 </head>
 <body>
 
-    <h1>Sistem Informasi Mahasiswa</h1>
     <hr>
 
     @yield('content')
