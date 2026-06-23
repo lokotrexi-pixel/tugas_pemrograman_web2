@@ -49,6 +49,15 @@ class MahasiswaController extends Controller
     }
 
     /**
+     * Show detail data (SHOW)
+     */
+    public function show($id)
+    {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        return view('mahasiswa.show', compact('mahasiswa'));
+    }
+
+    /**
      * Show form edit
      */
     public function edit($id)
