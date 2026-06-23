@@ -1,37 +1,46 @@
 @extends('mahasiswa.layout')
 
 @section('content')
+<div class="container">
 
-<a href="{{ route('mahasiswa.create') }}">+ Tambah Mahasiswa</a>
+    <h1>Sistem Informasi Mahasiswa</h1>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Jurusan</th>
-        <th>Email</th>
-        <th>Aksi</th>
-    </tr>
+    <h3>Data Mahasiswa</h3>
 
-    @foreach($mahasiswa as $m)
-    <tr>
-        <td>{{ $m->nim }}</td>
-        <td>{{ $m->nama }}</td>
-        <td>{{ $m->jurusan }}</td>
-        <td>{{ $m->email }}</td>
-        <td>
-            <a href="{{ route('mahasiswa.show', $m->id) }}">Lihat</a>
-            <a href="{{ route('mahasiswa.edit', $m->id) }}">Edit</a>
+    <a href="/mahasiswa/create">+ Tambah Mahasiswa</a>
 
-            <form action="{{ route('mahasiswa.destroy', $m->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Hapus</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
+    <br><br>
 
-</table>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Email</th>
+            <th>Aksi</th>
+        </tr>
 
+        @foreach ($mahasiswa as $mhs)
+        <tr>
+            <td>{{ $mhs->nim }}</td>
+            <td>{{ $mhs->nama }}</td>
+            <td>{{ $mhs->jurusan }}</td>
+            <td>{{ $mhs->email }}</td>
+            <td>
+                <a href="/mahasiswa/{{ $mhs->id }}/edit">Edit</a>
+
+                |
+
+                <form action="/mahasiswa/{{ $mhs->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Hapus</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+
+    </table>
+
+</div>
 @endsection
