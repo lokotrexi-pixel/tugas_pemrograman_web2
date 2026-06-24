@@ -13,7 +13,8 @@ class MahasiswaSeeder extends Seeder
             'nim' => '241110024',
             'nama' => 'Johan',
             'jurusan' => 'Informatika',
-            'email' => 'johan@gmail.com'
+            'email' => 'johan@gmail.com',
+            'alamat' => 'Yogyakarta'
         ]);
     }
 }
