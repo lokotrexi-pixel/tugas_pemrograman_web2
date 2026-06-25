@@ -4,53 +4,53 @@
 
 <div class="card shadow border-0">
 
-```
-<div class="card-header bg-primary text-white">
-    <h4 class="mb-0">Tambah Mahasiswa</h4>
-</div>
+    <div class="card-body">
 
-<div class="card-body">
+        <h2 class="mb-4">
+            ➕ Tambah Mahasiswa
+        </h2>
 
-    <form method="POST" action="/mahasiswa">
-        @csrf
+        <form method="POST" action="/mahasiswa">
 
-        <div class="mb-3">
-            <label class="form-label">NIM</label>
-            <input class="form-control" type="text" name="nim" required>
-        </div>
+            @csrf
 
-        <div class="mb-3">
-            <label class="form-label">Nama</label>
-            <input class="form-control" type="text" name="nama" required>
-        </div>
+            <div class="mb-3">
+                <label>NIM</label>
+                <input class="form-control" type="text" name="nim">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Jurusan</label>
-            <input class="form-control" type="text" name="jurusan" required>
-        </div>
+            <div class="mb-3">
+                <label>Nama</label>
+                <input class="form-control" type="text" name="nama">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input class="form-control" type="email" name="email" required>
-        </div>
+            <div class="mb-3">
+                <label>Jurusan</label>
+                <input class="form-control" type="text" name="jurusan">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Alamat</label>
-            <textarea class="form-control" rows="3" name="alamat"></textarea>
-        </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input class="form-control" type="email" name="email">
+            </div>
 
-        <button class="btn btn-primary">
-            Simpan Data
-        </button>
+            <div class="mb-3">
+                <label>Alamat</label>
+                <textarea class="form-control" name="alamat"></textarea>
+            </div>
 
-        <a href="/mahasiswa" class="btn btn-secondary">
-            Kembali
-        </a>
+            <button class="btn btn-primary">
+                Simpan Data
+            </button>
 
-    </form>
+            <a href="/mahasiswa"
+               class="btn btn-secondary">
+                Kembali
+            </a>
 
-</div>
-```
+        </form>
+
+    </div>
 
 </div>
 

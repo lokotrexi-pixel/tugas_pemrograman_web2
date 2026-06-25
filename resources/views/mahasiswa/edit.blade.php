@@ -4,77 +4,68 @@
 
 <div class="card shadow border-0">
 
-```
-<div class="card-header bg-success text-white">
-    <h4 class="mb-0">Edit Data Mahasiswa</h4>
-</div>
+    <div class="card-body">
 
-<div class="card-body">
+        <h2 class="mb-4">
+            ✏️ Edit Mahasiswa
+        </h2>
 
-    <form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
-        @csrf
-        @method('PUT')
+        <form method="POST"
+              action="/mahasiswa/{{ $mahasiswa->id }}">
 
-        <div class="mb-3">
-            <label class="form-label">NIM</label>
-            <input
-                class="form-control"
-                type="text"
-                name="nim"
-                value="{{ $mahasiswa->nim }}"
-                required>
-        </div>
+            @csrf
+            @method('PUT')
 
-        <div class="mb-3">
-            <label class="form-label">Nama</label>
-            <input
-                class="form-control"
-                type="text"
-                name="nama"
-                value="{{ $mahasiswa->nama }}"
-                required>
-        </div>
+            <div class="mb-3">
+                <label>NIM</label>
+                <input class="form-control"
+                       type="text"
+                       name="nim"
+                       value="{{ $mahasiswa->nim }}">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Jurusan</label>
-            <input
-                class="form-control"
-                type="text"
-                name="jurusan"
-                value="{{ $mahasiswa->jurusan }}"
-                required>
-        </div>
+            <div class="mb-3">
+                <label>Nama</label>
+                <input class="form-control"
+                       type="text"
+                       name="nama"
+                       value="{{ $mahasiswa->nama }}">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input
-                class="form-control"
-                type="email"
-                name="email"
-                value="{{ $mahasiswa->email }}"
-                required>
-        </div>
+            <div class="mb-3">
+                <label>Jurusan</label>
+                <input class="form-control"
+                       type="text"
+                       name="jurusan"
+                       value="{{ $mahasiswa->jurusan }}">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Alamat</label>
-            <textarea
-                class="form-control"
-                rows="3"
-                name="alamat">{{ $mahasiswa->alamat }}</textarea>
-        </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input class="form-control"
+                       type="email"
+                       name="email"
+                       value="{{ $mahasiswa->email }}">
+            </div>
 
-        <button class="btn btn-success">
-            Update Data
-        </button>
+            <div class="mb-3">
+                <label>Alamat</label>
+                <textarea class="form-control"
+                          name="alamat">{{ $mahasiswa->alamat }}</textarea>
+            </div>
 
-        <a href="/mahasiswa" class="btn btn-secondary">
-            Kembali
-        </a>
+            <button class="btn btn-success">
+                Update Data
+            </button>
 
-    </form>
+            <a href="/mahasiswa"
+               class="btn btn-secondary">
+                Kembali
+            </a>
 
-</div>
-```
+        </form>
+
+    </div>
 
 </div>
 

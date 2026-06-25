@@ -1,75 +1,77 @@
 <!DOCTYPE html>
-
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Informasi Mahasiswa</title>
 
-```
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-    body{
-        background-color:#f5f7fa;
-    }
+    <style>
+        body{
+            background:#f4f7fc;
+        }
 
-    .navbar-brand{
-        font-weight:bold;
-        font-size:1.2rem;
-    }
+        .navbar-custom{
+            background:linear-gradient(90deg,#2563eb,#1d4ed8);
+            box-shadow:0 2px 15px rgba(0,0,0,.15);
+        }
 
-    .card-stat{
-        border:none;
-        border-radius:15px;
-        box-shadow:0 4px 10px rgba(0,0,0,.08);
-    }
+        .card-dashboard{
+            border:none;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,.08);
+        }
 
-    .table-container{
-        background:white;
-        border-radius:15px;
-        padding:20px;
-        box-shadow:0 4px 10px rgba(0,0,0,.08);
-    }
+        .table-card{
+            border:none;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 4px 15px rgba(0,0,0,.08);
+        }
 
-    footer{
-        margin-top:50px;
-        padding:20px;
-        text-align:center;
-        color:#666;
-    }
-</style>
-```
-
+        footer{
+            margin-top:50px;
+        }
+    </style>
 </head>
-
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div class="container">
 
-```
-    <a class="navbar-brand" href="/mahasiswa">
-        🎓 Sistem Informasi Mahasiswa
-    </a>
-
-    <div>
-        <a href="/mahasiswa/create" class="btn btn-light btn-sm fw-bold">
-            + Tambah Mahasiswa
+        <a class="navbar-brand fw-bold" href="/mahasiswa">
+            🎓 Sistem Informasi Mahasiswa
         </a>
+
+        <div>
+            <span class="text-white me-3">
+                Laravel + PostgreSQL
+            </span>
+
+            <a href="/mahasiswa/create"
+               class="btn btn-light fw-semibold">
+                + Tambah Mahasiswa
+            </a>
+        </div>
+
     </div>
-
-</div>
-```
-
 </nav>
 
 <div class="container mt-4">
     @yield('content')
 </div>
 
-<footer>
-    Sistem Informasi Mahasiswa | Laravel + PostgreSQL + Railway
+<footer class="text-center text-muted">
+    <hr>
+
+    <p>
+        © 2026 Sistem Informasi Mahasiswa
+    </p>
+
+    <p>
+        Laravel 8 • PostgreSQL • Railway • Supabase
+    </p>
 </footer>
 
 </body>
