@@ -1,7 +1,8 @@
-# Opened Files
-## File Name
+<Opened Files>
+<File Name>
 database\seeders\MahasiswaSeeder.php
-## File Content
+</File Name>
+<File Content>
 <?php
 
 namespace Database\Seeders;
@@ -22,10 +23,13 @@ class MahasiswaSeeder extends Seeder
         ]);
     }
 }
-# Opened Files
-## File Name
+</File Content>
+</Opened Files>
+<Opened Files>
+<File Name>
 resources\views\mahasiswa\index.blade.php
-## File Content
+</File Name>
+<File Content>
 @extends('mahasiswa.layout')
 
 @section('content')
@@ -122,10 +126,13 @@ resources\views\mahasiswa\index.blade.php
 
 @endsection
 
-# Opened Files
-## File Name
+</File Content>
+</Opened Files>
+<Opened Files>
+<File Name>
 resources\views\mahasiswa\create.blade.php
-## File Content
+</File Name>
+<File Content>
 @extends('mahasiswa.layout')
 
 @section('content')
@@ -184,10 +191,13 @@ resources\views\mahasiswa\create.blade.php
 
 @endsection
 
-# Opened Files
-## File Name
+</File Content>
+</Opened Files>
+<Opened Files>
+<File Name>
 resources\views\mahasiswa\edit.blade.php
-## File Content
+</File Name>
+<File Content>
 @extends('mahasiswa.layout')
 
 @section('content')
@@ -270,10 +280,13 @@ resources\views\mahasiswa\edit.blade.php
 
 @endsection
 
-# Opened Files
-## File Name
+</File Content>
+</Opened Files>
+<Opened Files>
+<File Name>
 resources\views\mahasiswa\layout.blade.php
-## File Content
+</File Name>
+<File Content>
 <!DOCTYPE html>
 
 <html lang="id">
@@ -351,3 +364,5 @@ resources\views\mahasiswa\layout.blade.php
 </body>
 </html>
 
+</File Content>
+</Opened Files>

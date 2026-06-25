@@ -1,199 +1,25 @@
 # Opened Files
 ## File Name
-README.md
-## File Content
-# Sistem Informasi Mahasiswa
-
-## Anggota
-
-### Ketua
-
-* Johan Purnomo
-
-### Anggota 1 (Backend)
-
-* Nikolaus Kuai
-
-### Anggota 2 (Frontend UI)
-
-* Hamdan Mahmud
-
-### Anggota 3 (Database)
-
-* Thomas Aquino Sanga Ola
-
-### Anggota 4 (Testing & Dokumentasi)
-
-* Purnomo
-
----
-
-## Pembagian Tugas
-
-### Ketua
-
-* Mengatur repository GitHub
-* Membuat struktur project Laravel
-* Membuat model, migration, dan resource controller awal
-* Menggabungkan hasil kerja anggota (merge)
-* Mengatur branch dan workflow
-* Deploy aplikasi
-
-### Anggota 1 (Backend - CRUD)
-
-* Mengembangkan Model Mahasiswa
-* Mengisi Controller Mahasiswa
-* Membuat CRUD (Create, Read, Update, Delete)
-* Membuat dan mengatur Routing Laravel
-* Validasi data input
-
-### Anggota 2 (Frontend UI)
-
-* Membuat Blade Template
-* Mendesain halaman menggunakan Bootstrap/Tailwind
-* Membuat layout aplikasi (navbar, tabel, form, dan halaman CRUD)
-
-### Anggota 3 (Database)
-
-* Menyusun struktur database
-* Membuat ERD sederhana
-* Membuat seeder database
-* Pengelolaan data awal aplikasi
-
-### Anggota 4 (Testing & Dokumentasi)
-
-* Testing fitur CRUD
-* Dokumentasi penggunaan aplikasi
-* Screenshot hasil aplikasi
-* Penyusunan laporan proyek
-
----
-
-## Teknologi yang Digunakan
-
-* Laravel
-* PHP
-* MySQL
-* Bootstrap
-* Git & GitHub
-
----
-
-## Fitur Sistem
-
-* Manajemen data mahasiswa
-* Tambah data mahasiswa
-* Lihat data mahasiswa
-* Edit data mahasiswa
-* Hapus data mahasiswa
-
-# Opened Files
-## File Name
-app\Http\Controllers\MahasiswaController.php
+database\seeders\MahasiswaSeeder.php
 ## File Content
 <?php
 
-namespace App\Http\Controllers;
+namespace Database\Seeders;
 
-use Illuminate\Http\Request;
-use App\Models\Mahasiswa;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class MahasiswaController extends Controller
+class MahasiswaSeeder extends Seeder
 {
-    /**
-     * Display all data
-     */
-    public function index()
+    public function run(): void
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mahasiswa'));
-    }
-
-    /**
-     * Show form create
-     */
-    public function create()
-    {
-        return view('mahasiswa.create');
-    }
-
-    /**
-     * Store data
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nim' => 'required',
-            'nama' => 'required',
-            'jurusan' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
+        DB::table('mahasiswas')->insert([
+            'nim' => '241110024',
+            'nama' => 'Johan',
+            'jurusan' => 'Informatika',
+            'email' => 'johan@gmail.com',
+            'alamat' => 'Yogyakarta'
         ]);
-
-        Mahasiswa::create([
-            'nim' => $request->nim,
-            'nama' => $request->nama,
-            'jurusan' => $request->jurusan,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-        ]);
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil ditambahkan');
-    }
-
-    /**
-     * Show detail data (SHOW)
-     */
-    public function show($id)
-    {
-        $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('mahasiswa.show', compact('mahasiswa'));
-    }
-
-    /**
-     * Show form edit
-     */
-    public function edit($id)
-    {
-        $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
-    }
-
-    /**
-     * Update data
-     */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nim' => 'required',
-            'nama' => 'required',
-            'jurusan' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
-        ]);
-
-        $mahasiswa = Mahasiswa::findOrFail($id);
-
-        $mahasiswa->update([
-            'nim' => $request->nim,
-            'nama' => $request->nama,
-            'jurusan' => $request->jurusan,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-        ]);
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil diupdate');
-    }
-
-    /**
-     * Delete data
-     */
-    public function destroy($id)
-    {
-        $mahasiswa = Mahasiswa::findOrFail($id);
-        $mahasiswa->delete();
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil dihapus');
     }
 }
 # Opened Files
@@ -204,36 +30,324 @@ resources\views\mahasiswa\index.blade.php
 
 @section('content')
 
-<a href="{{ route('mahasiswa.create') }}">+ Tambah Mahasiswa</a>
+<div class="row mb-4">
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Jurusan</th>
-        <th>Email</th>
-        <th>Aksi</th>
-    </tr>
+```
+<div class="col-md-4">
+    <div class="card card-stat">
+        <div class="card-body">
+            <h6 class="text-muted">Total Mahasiswa</h6>
+            <h2>{{ $mahasiswa->count() }}</h2>
+        </div>
+    </div>
+</div>
+```
 
-    @foreach($mahasiswa as $m)
-    <tr>
-        <td>{{ $m->nim }}</td>
-        <td>{{ $m->nama }}</td>
-        <td>{{ $m->jurusan }}</td>
-        <td>{{ $m->email }}</td>
-        <td>
-            <a href="{{ route('mahasiswa.show', $m->id) }}">Lihat</a>
-            <a href="{{ route('mahasiswa.edit', $m->id) }}">Edit</a>
+</div>
 
-            <form action="{{ route('mahasiswa.destroy', $m->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Hapus</button>
-            </form>
-        </td>
-    </tr>
+<div class="table-container">
+
+```
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Data Mahasiswa</h2>
+
+    <a href="/mahasiswa/create" class="btn btn-primary">
+        Tambah Mahasiswa
+    </a>
+</div>
+
+<table class="table table-hover align-middle">
+
+    <thead class="table-primary">
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Email</th>
+            <th width="180">Aksi</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach ($mahasiswa as $mhs)
+
+        <tr>
+            <td>{{ $mhs->nim }}</td>
+
+            <td>
+                <strong>{{ $mhs->nama }}</strong>
+            </td>
+
+            <td>
+                <span class="badge bg-success">
+                    {{ $mhs->jurusan }}
+                </span>
+            </td>
+
+            <td>{{ $mhs->email }}</td>
+
+            <td>
+
+                <a href="/mahasiswa/{{ $mhs->id }}/edit"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <form action="/mahasiswa/{{ $mhs->id }}"
+                      method="POST"
+                      style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger btn-sm"
+                        onclick="return confirm('Yakin ingin menghapus data?')">
+                        Hapus
+                    </button>
+                </form>
+
+            </td>
+        </tr>
+
     @endforeach
 
+    </tbody>
+
 </table>
+```
+
+</div>
 
 @endsection
+
+# Opened Files
+## File Name
+resources\views\mahasiswa\create.blade.php
+## File Content
+@extends('mahasiswa.layout')
+
+@section('content')
+
+<div class="card shadow border-0">
+
+```
+<div class="card-header bg-primary text-white">
+    <h4 class="mb-0">Tambah Mahasiswa</h4>
+</div>
+
+<div class="card-body">
+
+    <form method="POST" action="/mahasiswa">
+        @csrf
+
+        <div class="mb-3">
+            <label class="form-label">NIM</label>
+            <input class="form-control" type="text" name="nim" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input class="form-control" type="text" name="nama" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jurusan</label>
+            <input class="form-control" type="text" name="jurusan" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" type="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <textarea class="form-control" rows="3" name="alamat"></textarea>
+        </div>
+
+        <button class="btn btn-primary">
+            Simpan Data
+        </button>
+
+        <a href="/mahasiswa" class="btn btn-secondary">
+            Kembali
+        </a>
+
+    </form>
+
+</div>
+```
+
+</div>
+
+@endsection
+
+# Opened Files
+## File Name
+resources\views\mahasiswa\edit.blade.php
+## File Content
+@extends('mahasiswa.layout')
+
+@section('content')
+
+<div class="card shadow border-0">
+
+```
+<div class="card-header bg-success text-white">
+    <h4 class="mb-0">Edit Data Mahasiswa</h4>
+</div>
+
+<div class="card-body">
+
+    <form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
+        @csrf
+        @method('PUT')
+
+        <div class="mb-3">
+            <label class="form-label">NIM</label>
+            <input
+                class="form-control"
+                type="text"
+                name="nim"
+                value="{{ $mahasiswa->nim }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input
+                class="form-control"
+                type="text"
+                name="nama"
+                value="{{ $mahasiswa->nama }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jurusan</label>
+            <input
+                class="form-control"
+                type="text"
+                name="jurusan"
+                value="{{ $mahasiswa->jurusan }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+                class="form-control"
+                type="email"
+                name="email"
+                value="{{ $mahasiswa->email }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <textarea
+                class="form-control"
+                rows="3"
+                name="alamat">{{ $mahasiswa->alamat }}</textarea>
+        </div>
+
+        <button class="btn btn-success">
+            Update Data
+        </button>
+
+        <a href="/mahasiswa" class="btn btn-secondary">
+            Kembali
+        </a>
+
+    </form>
+
+</div>
+```
+
+</div>
+
+@endsection
+
+# Opened Files
+## File Name
+resources\views\mahasiswa\layout.blade.php
+## File Content
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Mahasiswa</title>
+
+```
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body{
+        background-color:#f5f7fa;
+    }
+
+    .navbar-brand{
+        font-weight:bold;
+        font-size:1.2rem;
+    }
+
+    .card-stat{
+        border:none;
+        border-radius:15px;
+        box-shadow:0 4px 10px rgba(0,0,0,.08);
+    }
+
+    .table-container{
+        background:white;
+        border-radius:15px;
+        padding:20px;
+        box-shadow:0 4px 10px rgba(0,0,0,.08);
+    }
+
+    footer{
+        margin-top:50px;
+        padding:20px;
+        text-align:center;
+        color:#666;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+
+```
+    <a class="navbar-brand" href="/mahasiswa">
+        🎓 Sistem Informasi Mahasiswa
+    </a>
+
+    <div>
+        <a href="/mahasiswa/create" class="btn btn-light btn-sm fw-bold">
+            + Tambah Mahasiswa
+        </a>
+    </div>
+
+</div>
+```
+
+</nav>
+
+<div class="container mt-4">
+    @yield('content')
+</div>
+
+<footer>
+    Sistem Informasi Mahasiswa | Laravel + PostgreSQL + Railway
+</footer>
+
+</body>
+</html>
+

@@ -2,40 +2,80 @@
 
 @section('content')
 
-<h2>Edit Mahasiswa</h2>
+<div class="card shadow border-0">
 
-<form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
-    @csrf
-    @method('PUT')
+```
+<div class="card-header bg-success text-white">
+    <h4 class="mb-0">Edit Data Mahasiswa</h4>
+</div>
 
-    <div class="mb-3">
-        <label>NIM</label>
-        <input class="form-control" type="text" name="nim" value="{{ $mahasiswa->nim }}">
-    </div>
+<div class="card-body">
 
-    <div class="mb-3">
-        <label>Nama</label>
-        <input class="form-control" type="text" name="nama" value="{{ $mahasiswa->nama }}">
-    </div>
+    <form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
+        @csrf
+        @method('PUT')
 
-    <div class="mb-3">
-        <label>Jurusan</label>
-        <input class="form-control" type="text" name="jurusan" value="{{ $mahasiswa->jurusan }}">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">NIM</label>
+            <input
+                class="form-control"
+                type="text"
+                name="nim"
+                value="{{ $mahasiswa->nim }}"
+                required>
+        </div>
 
-    <div class="mb-3">
-        <label>Email</label>
-        <input class="form-control" type="email" name="email" value="{{ $mahasiswa->email }}">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input
+                class="form-control"
+                type="text"
+                name="nama"
+                value="{{ $mahasiswa->nama }}"
+                required>
+        </div>
 
-    <div class="mb-3">
-        <label>Alamat</label>
-        <textarea class="form-control" name="alamat">{{ $mahasiswa->alamat }}</textarea>
-    </div>
+        <div class="mb-3">
+            <label class="form-label">Jurusan</label>
+            <input
+                class="form-control"
+                type="text"
+                name="jurusan"
+                value="{{ $mahasiswa->jurusan }}"
+                required>
+        </div>
 
-    <button class="btn btn-success" type="submit">
-        Update
-    </button>
-</form>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+                class="form-control"
+                type="email"
+                name="email"
+                value="{{ $mahasiswa->email }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <textarea
+                class="form-control"
+                rows="3"
+                name="alamat">{{ $mahasiswa->alamat }}</textarea>
+        </div>
+
+        <button class="btn btn-success">
+            Update Data
+        </button>
+
+        <a href="/mahasiswa" class="btn btn-secondary">
+            Kembali
+        </a>
+
+    </form>
+
+</div>
+```
+
+</div>
 
 @endsection
