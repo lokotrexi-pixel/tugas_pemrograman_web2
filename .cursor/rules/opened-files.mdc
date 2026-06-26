@@ -284,7 +284,7 @@ resources\views\mahasiswa\index.blade.php
         <div class="card card-dashboard">
             <div class="card-body">
                 <h6 class="text-muted">Total Mahasiswa</h6>
-                <h1>{{ count($mahasiswa) }}</h1>
+                <h1 id="jumlahData">{{ count($mahasiswa) }}</h1>
             </div>
         </div>
     </div>
@@ -309,24 +309,44 @@ resources\views\mahasiswa\index.blade.php
 
 </div>
 
-<div class="mb-3">
-    <input
-        type="text"
-        class="form-control"
-        placeholder=" 📋Daftar Identitas Mahasiswa"
-    >
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+        <label class="form-label fw-bold">
+            📋 Daftar Identitas Mahasiswa
+        </label>
+
+        <input
+            type="text"
+            id="searchInput"
+            class="form-control"
+            placeholder="Cari berdasarkan Nama, NIM, Jurusan, Email atau Alamat..."
+        >
+
+        <small class="text-muted mt-2 d-block">
+            Menampilkan
+            <span id="hasilPencarian">{{ count($mahasiswa) }}</span>
+            dari
+            {{ count($mahasiswa) }}
+            mahasiswa
+        </small>
+
+    </div>
 </div>
 
 <div class="card table-card">
+
     <div class="card-body">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
+
             <h2>Data Mahasiswa</h2>
 
             <a href="/mahasiswa/create"
                class="btn btn-primary">
                 Tambah Mahasiswa
             </a>
+
         </div>
 
         <table class="table table-hover align-middle">
@@ -342,26 +362,31 @@ resources\views\mahasiswa\index.blade.php
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tableBody">
 
             @foreach ($mahasiswa as $mhs)
 
                 <tr>
+
                     <td>{{ $mhs->nim }}</td>
 
-                    <td>
+                    <td class="nama">
                         <strong>{{ $mhs->nama }}</strong>
                     </td>
 
-                    <td>
+                    <td class="jurusan">
                         <span class="badge bg-success">
                             {{ $mhs->jurusan }}
                         </span>
                     </td>
 
-                    <td>{{ $mhs->email }}</td>
+                    <td class="email">
+                        {{ $mhs->email }}
+                    </td>
 
-                    <td>{{ $mhs->alamat }}</td>
+                    <td class="alamat">
+                        {{ $mhs->alamat }}
+                    </td>
 
                     <td>
 
@@ -370,15 +395,19 @@ resources\views\mahasiswa\index.blade.php
                             Edit
                         </a>
 
-                        <form action="/mahasiswa/{{ $mhs->id }}"
-                              method="POST"
-                              style="display:inline;">
+                        <form
+                            action="/mahasiswa/{{ $mhs->id }}"
+                            method="POST"
+                            style="display:inline;">
+
                             @csrf
                             @method('DELETE')
 
-                            <button class="btn btn-danger btn-sm">
+                            <button
+                                class="btn btn-danger btn-sm">
                                 Hapus
                             </button>
+
                         </form>
 
                     </td>
@@ -391,8 +420,65 @@ resources\views\mahasiswa\index.blade.php
 
         </table>
 
+        <div
+            id="notFound"
+            class="alert alert-warning text-center mt-3"
+            style="display:none;">
+
+            Mahasiswa tidak ditemukan.
+
+        </div>
+
     </div>
+
 </div>
+
+<script>
+
+const input=document.getElementById('searchInput');
+const rows=document.querySelectorAll('#tableBody tr');
+const hasil=document.getElementById('hasilPencarian');
+const kosong=document.getElementById('notFound');
+
+input.addEventListener('keyup',function(){
+
+let keyword=this.value.toLowerCase();
+
+let tampil=0;
+
+rows.forEach(function(row){
+
+let text=row.innerText.toLowerCase();
+
+if(text.indexOf(keyword)>-1){
+
+row.style.display='';
+
+tampil++;
+
+}else{
+
+row.style.display='none';
+
+}
+
+});
+
+hasil.innerHTML=tampil;
+
+if(tampil==0){
+
+kosong.style.display='block';
+
+}else{
+
+kosong.style.display='none';
+
+}
+
+});
+
+</script>
 
 @endsection
 # Opened Files
